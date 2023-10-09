@@ -909,7 +909,7 @@ class BlockAdjacency:
         # and then update num_completed
         self.num_completed += 1
 
-        return ss.shape[0], torch.nn.functional.one_hot(ss.long(), num_classes=4), adj
+        return ss.shape[0], torch.nn.functional.one_hot(ss.long(), num_classes=4), adj, item
 
 
 class Target:

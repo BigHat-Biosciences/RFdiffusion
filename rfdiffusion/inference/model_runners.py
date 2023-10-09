@@ -773,7 +773,7 @@ class ScaffoldedSampler(SelfConditioning):
         ##########################
         ### Process Fold Input ###
         ##########################
-        self.L, self.ss, self.adj = self.blockadjacency.get_scaffold()
+        self.L, self.ss, self.adj, scaffold_name = self.blockadjacency.get_scaffold()
         self.adj = nn.one_hot(self.adj.long(), num_classes=3)
 
         ##############################
@@ -904,7 +904,7 @@ class ScaffoldedSampler(SelfConditioning):
 
 
         xT = torch.clone(fa_stack[-1].squeeze()[:,:14,:])
-        return xT, seq_T
+        return xT, seq_T, scaffold_name
     
     def _preprocess(self, seq, xyz_t, t):
         msa_masked, msa_full, seq, xyz_prev, idx_pdb, t1d, t2d, xyz_t, alpha_t = super()._preprocess(seq, xyz_t, t, repack=False)
